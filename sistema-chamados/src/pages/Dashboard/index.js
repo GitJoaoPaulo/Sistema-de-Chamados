@@ -12,7 +12,6 @@ function Dashboard() {
       <Header/>
       
       <h1>Página de Dashboard</h1>
-      <button onClick={() => signOut()}>Sair da conta</button>
     </div>
   );
 }
