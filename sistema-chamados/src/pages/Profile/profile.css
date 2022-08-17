@@ -1,0 +1,89 @@
+.container{
+    display: flex;
+    background-color: #f8f8f8;
+    border-radius: 5px;
+    padding: .8em;
+    align-items: center;
+    margin-bottom: 1em;
+}
+
+.label-avatar{
+    width: 280px;
+    height: 280px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    cursor: pointer;
+}
+
+.label-avatar input{
+    display: none;
+}
+
+.label-avatar span{
+    z-index: 99;
+    position: absolute;
+    opacity: 0.7;
+    transition: all 0.5s;
+}
+
+.label-avatar span:hover{
+    opacity: 1;
+    transform: scale(1.4);
+}
+
+.form-avatar img{
+    margin-bottom: 1em;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.form-avatar label{
+    margin-bottom: 1em;
+    font-size: 1.4em;
+}
+
+.form-avatar input{
+    margin: 1em 0;
+    padding: .7em;
+    border: 0;
+    max-width: 600px;
+}
+
+.form-avatar input:disabled{
+    cursor: not-allowed;
+}
+
+.form-avatar button{
+    max-width: 600px;
+    transition: all 0.5s;
+}
+
+.form-avatar button:hover{
+    border:  1px solid #181C2E;
+    background-color: #f8f8f8;
+    color: #181C2E;
+}
+
+.logout-btn{
+    border: 1px solid #181C2E;
+    padding: 8px 20px;
+    border-radius: 5px;
+    font-size: 1.2em;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+@media screen and (max-width: 320px) {
+    .form-avatar label{
+        width: 95%;
+        height: 95%;
+    }
+
+    .form-avatar img{
+        width: 95%;
+        height: 95%;
+    }
+}
