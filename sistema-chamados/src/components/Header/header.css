@@ -1,4 +1,4 @@
-.sidebar{
+.sidebar {
     margin: 0;
     padding: 0;
     width: 200px;
@@ -8,7 +8,7 @@
     overflow: auto;
 }
 
-.sidebar div{
+.sidebar div {
     background: url('../../assets/cover.png');
     background-color: #181C2e;
     background-position: center;
@@ -16,10 +16,10 @@
     background-size: cover;
     height: 150px;
     padding-top: 25px;
-    
+
 }
 
-.sidebar div img{
+.sidebar div img {
     border-radius: 50%;
     display: block;
     height: 120px;
@@ -30,7 +30,7 @@
     object-fit: cover;
 }
 
-.sidebar a{
+.sidebar a {
     color: rgba(255, 255, 255, 0.7);
     padding: 20px 15px;
     display: flex;
@@ -39,17 +39,22 @@
     transition: ease-in-out .4s;
 }
 
-.sidebar a:hover{
+.sidebar a:hover {
     background-color: #121212;
     color: #FFF;
 }
 
-.sidebar a svg{
+.sidebar a svg {
     margin-right: .5em;
 }
 
+.content {
+    margin-left: 200px;
+    padding: 1px 16px;
+}
+
 @media screen and (max-width:700px) {
-    .sidebar{
+    .sidebar {
         width: 100%;
         height: auto;
         position: relative;
@@ -57,19 +62,23 @@
         justify-content: space-between;
     }
 
-    .sidebar div{
+    .sidebar div {
         display: none;
     }
 
-    .sidebar a:hover{
+    .sidebar a:hover {
         background-color: #181C2e;
         color: #FFF;
+    }
+
+    .content{
+        margin-left: 0;
     }
 
 }
 
 @media screen and (max-width:400px) {
-    .sidebar{
+    .sidebar {
         width: 100%;
         height: auto;
         display: flex;
@@ -78,12 +87,12 @@
         justify-content: center;
     }
 
-    .sidebar a:hover{
+    .sidebar a:hover {
         background-color: #181C2e;
         color: #FFF;
     }
 
-    .sidebar a svg{
+    .sidebar a svg {
         display: none;
     }
 
