@@ -112,7 +112,7 @@ function AuthProvider({ children }) {
 
     return (
         //Importa todos os dados do user
-        <AuthContext.Provider value={{ signed: !!user, user, loading, signUp, signOut, signIn, loadingAuth }}>
+        <AuthContext.Provider value={{ signed: !!user, user, loading, signUp, signOut, signIn, loadingAuth, setUser, storageUser }}>
             {children}
         </AuthContext.Provider>
     )
