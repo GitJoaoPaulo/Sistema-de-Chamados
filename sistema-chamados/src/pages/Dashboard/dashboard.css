@@ -1,0 +1,36 @@
+.dashboard{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.dashboard span{
+    font-size: 1.5em;
+    margin: 1.5em 0;
+    font-weight: 600;
+}
+
+.new{
+    margin-bottom: 1.5em;
+    background-color: #83bf02;
+    color: #FFF;
+    border: 0;
+    padding: 0.5em;
+    border-radius: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: 600;
+    font-size: 1.2em;
+    transition: all 0.5s;
+}
+
+.new svg {
+    margin-right: 5px;
+}
+
+.new:hover{
+    background-color: #5fd204;
+    transform: scale(1.1);
+}

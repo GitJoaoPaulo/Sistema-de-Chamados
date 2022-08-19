@@ -12,10 +12,10 @@ function SignIn() {
   const { signIn, loadingAuth } = useContext(AuthContext);
 
 
-  function handleSubimit(e){
+  function handleSubimit(e) {
     e.preventDefault();
-    
-    if(email !== '' && password !== ''){
+
+    if (email !== '' && password !== '') {
       signIn(email, password);
     }
   }
@@ -23,15 +23,15 @@ function SignIn() {
   return (
     <div className='container-center'>
       <div className='login'>
-        
+
         <div className='logo-area'>
-          <img src={logo} alt="Sistema-Logo"/>
+          <img src={logo} alt="Sistema-Logo" />
         </div>
 
         <form onSubmit={handleSubimit}>
           <h1>Entrar</h1>
-          <input type="text" placeholder='email@exemplo.com' value={email} onChange={(e) => setEmail(e.target.value)}/>
-          <input type="password" placeholder='Digite sua senha' value={password} onChange={(e) => setPassword(e.target.value)}/>
+          <input type="text" placeholder='email@exemplo.com' value={email} onChange={(e) => setEmail(e.target.value)} />
+          <input type="password" placeholder='Digite sua senha' value={password} onChange={(e) => setPassword(e.target.value)} />
           <button type='submit'>{loadingAuth ? 'Carregando...' : 'Acessar'}</button>
         </form>
 
