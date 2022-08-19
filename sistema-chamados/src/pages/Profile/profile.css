@@ -33,34 +33,34 @@
     transform: scale(1.4);
 }
 
-.form-avatar img{
+.form-profile img{
     margin-bottom: 1em;
     border-radius: 50%;
     object-fit: cover;
 }
 
-.form-avatar label{
-    margin-bottom: 1em;
+.form-profile label{
+    margin: 0.5em 0.2em 0 0;
     font-size: 1.4em;
 }
 
-.form-avatar input{
+.form-profile input{
     margin: 1em 0;
     padding: .7em;
     border: 0;
     max-width: 600px;
 }
 
-.form-avatar input:disabled{
+.form-profile input:disabled{
     cursor: not-allowed;
 }
 
-.form-avatar button{
+.form-profile button{
     max-width: 600px;
     transition: all 0.5s;
 }
 
-.form-avatar button:hover{
+.form-profile button:hover{
     border:  1px solid #181C2E;
     background-color: #f8f8f8;
     color: #181C2E;
@@ -77,12 +77,12 @@
 }
 
 @media screen and (max-width: 320px) {
-    .form-avatar label{
+    .form-profile label{
         width: 95%;
         height: 95%;
     }
 
-    .form-avatar img{
+    .form-profile img{
         width: 95%;
         height: 95%;
     }
