@@ -105,7 +105,7 @@ function Profile() {
                 </Title>
 
                 <div className='container'>
-                    <form className='form-avatar' onSubmit={handleSave}>
+                    <form className='form-profile' onSubmit={handleSave}>
 
                         <label className='label-avatar'>
                             <span>
