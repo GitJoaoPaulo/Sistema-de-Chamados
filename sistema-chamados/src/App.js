@@ -9,7 +9,7 @@ function App() {
   return (
     <AuthProvider>
       <BrowserRouter>
-        <ToastContainer autoClose={2000} theme="dark" transition={Flip}/>
+        <ToastContainer autoClose={2000} theme="dark" transition={Flip} />
         <Routes />
       </BrowserRouter>
     </AuthProvider>

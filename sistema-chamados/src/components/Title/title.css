@@ -11,3 +11,9 @@
     margin-left: 1em;
     font-size: 1.5em;
 }
+
+@media screen and (max-width: 200px) {
+    .title span{
+        font-size: 90%;
+    }
+}
