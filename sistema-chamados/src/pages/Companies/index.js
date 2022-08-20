@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import firebase from '../../service/firebaseConnection';
-import './customers.css';
+import './companies.css';
 
 import Header from '../../components/Header';
 import Title from '../../components/Title';
@@ -8,7 +8,7 @@ import Title from '../../components/Title';
 import { FiUser } from 'react-icons/fi';
 import { toast } from 'react-toastify';
 
-function Customers() {
+function Companies() {
 
     const [nomeEmpresa, setNomeEmpresa] = useState("");
     const [cnpj, setCnpj] = useState("");
@@ -19,7 +19,7 @@ function Customers() {
         e.preventDefault();
 
         if (nomeEmpresa !== "" && cnpj.length >= 14 && cnpj !== "" && endereco !== "") {
-            await firebase.firestore().collection("customers").add({
+            await firebase.firestore().collection("companies").add({
                 nome: nomeEmpresa,
                 cnpj: cnpj,
                 endereco: endereco
@@ -45,12 +45,12 @@ function Customers() {
         <div>
             <Header />
             <div className='content'>
-                <Title name="Clientes">
+                <Title name="Nova empresa">
                     <FiUser size={24} />
                 </Title>
 
                 <div className='container'>
-                    <form className='form-profile customers' onSubmit={handleAdd}>
+                    <form className='form-profile companies' onSubmit={handleAdd}>
                         <label>Nome da Empresa</label>
                         <input type="text" placeholder='Nome da sua empresa' value={nomeEmpresa} onChange={(e) => setNomeEmpresa(e.target.value)} />
 
@@ -58,7 +58,7 @@ function Customers() {
                         <input type="text" placeholder='CNPJ da sua empresa' value={cnpj} onChange={(e) => setCnpj(e.target.value)} />
 
                         <label>Endereço</label>
-                        <input type="text" placeholder='Rua número, vila, estado' value={endereco} onChange={(e) => setEndereco(e.target.value)} />
+                        <input type="text" placeholder='Rua número, vila, estado, CEP' value={endereco} onChange={(e) => setEndereco(e.target.value)} />
 
                         <button type='submit'>Cadastrar</button>
 
@@ -71,4 +71,4 @@ function Customers() {
     )
 }
 
-export default Customers;
+export default Companies;
