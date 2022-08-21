@@ -5,6 +5,12 @@ import Header from '../../components/Header';
 import Title from '../../components/Title';
 
 function New() {
+
+    function handleRegister(e){
+        e.preventeDefault();
+        alert("TESTE")
+    }
+
     return (
         <div>
             <Header />
@@ -15,7 +21,7 @@ function New() {
                 </Title>
 
                 <div className='container'>
-                    <form className='form-profile'>
+                    <form className='form-profile' onSubmit={handleRegister}>
 
                         <label>Empresa</label>
                         <select>
@@ -28,9 +34,8 @@ function New() {
                         <select>
                             <option value="Suporte de Equipamentos">Suporte de Equipamentos</option>
                             <option value="Visita Tecnica">Visita Técnica</option>
-                            <option value="Financeiro">Financeiro</option>
                             <option value="Suporte Ar Condicionado">Suporte Ar Condicionado</option>
-                            <option value="Limpeza e Jardinagem">Limpeza e Jardinagem</option>
+                            <option value="Limpeza e Jardinagem">Limpeza ou Jardinagem</option>
                         </select>
 
                         <label>Status</label>
@@ -48,6 +53,7 @@ function New() {
                         <label>Complemento</label>
                         <textarea type="text" placeholder='Descreva seu problema (opcional).'></textarea>
 
+                        <button type='submit'>Registrar Chamado</button>
                     </form>
                 </div>
 

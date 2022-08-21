@@ -47,7 +47,7 @@
 .form-profile input,
 textarea,
 select {
-    margin: 1em 0;
+    margin: 1em;
     padding: .7em;
     border: 0;
     max-width: 600px;
