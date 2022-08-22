@@ -10,7 +10,7 @@ import { toast } from 'react-toastify';
 
 function Companies() {
 
-    const [nomeEmpresa, setNomeEmpresa] = useState("");
+    const [nomeEmpresa, setNomeEmpresa] = useState("")
     const [cnpj, setCnpj] = useState("");
     const [endereco, setEndereco] = useState("");
 
