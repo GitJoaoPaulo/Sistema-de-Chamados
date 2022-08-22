@@ -23,9 +23,9 @@ function Header() {
                 Chamados
             </Link>
 
-            <Link to="/customers">
+            <Link to="/companies">
                 <FiUser color='#FFF' size={24}/> 
-                Clientes
+                Empresas
             </Link>
 
             <Link to="/profile">

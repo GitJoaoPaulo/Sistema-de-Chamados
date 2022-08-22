@@ -56,7 +56,7 @@ function Dashboard() {
               <tbody>
                 <tr>
                   <td data-label="Cliente">Sujeito Programador</td>
-                  <td data-label="Assunto">Suporte</td>
+                  <td data-label="Assunto">Limpeza ou Jardinagem</td>
                   <td data-label="Status">
                     <span className='badge' style={{ backgroundColor: "#5cb85c" }}>Em aberto</span>
                   </td>
@@ -78,11 +78,7 @@ function Dashboard() {
 
           </>
         )
-
-
         }
-
-
 
       </div>
     </div>
