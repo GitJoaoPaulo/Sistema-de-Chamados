@@ -8,6 +8,7 @@ import { useState, useEffect, useContext } from 'react';
 import { AuthContext } from '../../contexts/auth';
 
 import firebase from '../../service/firebaseConnection';
+import { toast } from 'react-toastify';
 
 function New() {
 
@@ -61,9 +62,25 @@ function New() {
 
    
 
-    function handleRegister(e) {
-        e.preventeDefault();
-        alert("TESTE")
+    async function handleRegister(e) {
+        e.preventDefault();
+        await firebase.firestore().collection("called").add({
+            created: new Date(),
+            empresa: companies[companiesSelected].nome,
+            empresaId: companies[companiesSelected].id,
+            assunto: assunto,
+            status: status,
+            complemento: complemento,
+            userId: user.uid
+        })
+        .then(() => {
+            toast.success("Chamado registrado com sucesso!");
+            setComplemento("");
+            setCompaniesSelected(0);
+        })
+        .catch((error) => {
+            toast.error("Ops ocorreu um erro!", error);
+        })
     }
 
     //Chamado quando troca o assunto
