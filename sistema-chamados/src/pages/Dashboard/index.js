@@ -102,6 +102,14 @@ function Dashboard() {
     )
   }
 
+  async function handleMore(){
+    setLoadingMore(true);
+    await listRef.startAfter(lastDocs).limit(5).get()
+    .then((snapshot) => {
+      updateState(snapshot);
+    })
+  }
+
   return (
     <div>
       <Header />
@@ -167,6 +175,9 @@ function Dashboard() {
                 })}
               </tbody>
             </table>
+
+            {loadingMore && <h3 style={{textAlign: 'center', marginTop: 15}}>Buscando chamados...</h3>}
+            { !loadingMore && !isEmpty && <button className='btn-more' onClick={handleMore}>Buscar Mais</button>}
 
           </>
         )

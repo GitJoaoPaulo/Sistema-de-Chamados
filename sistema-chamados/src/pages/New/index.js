@@ -133,6 +133,7 @@ function New() {
                             <option value="Visita Tecnica">Visita Técnica</option>
                             <option value="Suporte Ar Condicionado">Suporte Ar Condicionado</option>
                             <option value="Limpeza e Jardinagem">Limpeza ou Jardinagem</option>
+                            <option value="Abastecimento de Produtos">Abastecimento de Produtos</option>
                         </select>
 
                         <label>Status</label>
