@@ -36,6 +36,21 @@
     transform: scale(1.1);
 }
 
+.btn-more{
+    padding: 7px;
+    margin-top: 1em;
+    border: 0;
+    background-color: #181C2E;
+    color: #f8f8f8;
+    border-radius: 5px;
+    font-size: 1.1em;
+    transition: all 0.5s;
+}
+
+.btn-more:hover{
+    transform: scale(1.1);
+}
+
 table{
     border: 1px solid #CCC;
     border-collapse: collapse;
