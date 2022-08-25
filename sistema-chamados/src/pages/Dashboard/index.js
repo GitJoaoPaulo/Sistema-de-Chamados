@@ -5,6 +5,7 @@ import firebase from '../../service/firebaseConnection';
 
 import Title from '../../components/Title';
 import Header from '../../components/Header';
+import Modal from '../../components/Modal';
 
 import { FiMessageCircle, FiPlus, FiSearch, FiEdit2 } from 'react-icons/fi';
 import { format } from 'date-fns';
@@ -19,31 +20,34 @@ function Dashboard() {
   const [loadingMore, setLoadingMore] = useState(false);
   const [isEmpty, setIsEmpty] = useState(false);
   const [lastDocs, setLastDocs] = useState();
+  const [showPostModal, setShowPostModal] = useState(false);
+  const [detail, setDetailt] = useState();
 
   useEffect(() => {
 
-    loadChaamdos();
+    async function loadChamados() {
+      await listRef.limit(5).get()
+        .then((snapshot) => {
+          updateState(snapshot);
+  
+        })
+        .catch((error) => {
+          console.log("Deu algum erro: ", error)
+          setLoadingMore(false);
+        })
+  
+      setLoading(false);
+  
+    }
+
+    loadChamados();
 
     return () => {
 
     }
 
   }, []);
-
-  async function loadChaamdos() {
-    await listRef.limit(5).get()
-      .then((snapshot) => {
-        updateState(snapshot);
-
-      })
-      .catch((error) => {
-        console.log("Deu algum erro: ", error)
-        setLoadingMore(false);
-      })
-
-    setLoading(false);
-
-  }
+  
 
   async function updateState(snapshot) {
     const isCollectionEmpty = snapshot.size === 0;
@@ -79,6 +83,20 @@ function Dashboard() {
 
   }
 
+  async function handleMore() {
+    setLoadingMore(true);
+    await listRef.startAfter(lastDocs).limit(5).get()
+      .then((snapshot) => {
+        updateState(snapshot);
+      })
+  }
+
+
+  function togglePostModal(item) {
+    setShowPostModal(!showPostModal);
+    setDetailt(item);
+  }
+
   if (loading) {
     return (
       <div>
@@ -100,14 +118,6 @@ function Dashboard() {
 
       </div>
     )
-  }
-
-  async function handleMore(){
-    setLoadingMore(true);
-    await listRef.startAfter(lastDocs).limit(5).get()
-    .then((snapshot) => {
-      updateState(snapshot);
-    })
   }
 
   return (
@@ -158,11 +168,11 @@ function Dashboard() {
                       <td data-label="Cliente">{item.empresa}</td>
                       <td data-label="Assunto">{item.assunto}</td>
                       <td data-label="Status">
-                        <span className='badge' style={{ backgroundColor: item.status === 'Atendido' ? '#5cb85c' : '#EE0000'}}>{item.status}</span>
+                        <span className='badge' style={{ backgroundColor: item.status === 'Atendido' ? '#5cb85c' : '#EE0000' }}>{item.status}</span>
                       </td>
                       <td data-label="Cadastrado">{item.createdFormated}</td>
                       <td data-label="#">
-                        <button className='action' style={{ backgroundColor: '#3583f6' }}>
+                        <button className='action' style={{ backgroundColor: '#3583f6' }} onClick={() => togglePostModal(item)}>
                           <FiSearch color='#FFF' size={17} />
                         </button>
 
@@ -176,16 +186,21 @@ function Dashboard() {
               </tbody>
             </table>
 
-            {loadingMore && <h3 style={{textAlign: 'center', marginTop: 15}}>Buscando chamados...</h3>}
-            { !loadingMore && !isEmpty && <button className='btn-more' onClick={handleMore}>Buscar Mais</button>}
+            {loadingMore && <h3 style={{ textAlign: 'center', marginTop: 15 }}>Buscando chamados...</h3>}
+            {!loadingMore && !isEmpty && <button className='btn-more' onClick={handleMore}>Buscar Mais</button>}
 
           </>
         )
         }
 
       </div>
+
+      {showPostModal && (
+        <Modal conteudo={detail} close={() => togglePostModal()} />
+      )}
+
     </div>
-  );
+  )
 }
 
 export default Dashboard;
