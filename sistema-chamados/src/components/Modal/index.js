@@ -16,25 +16,25 @@ function Modal({ conteudo, close }) {
 
                     <div className='row'>
 
-                        <span>Empresa: <a>{conteudo.empresa}</a></span>
+                        <span>Empresa: <i>{conteudo.empresa}</i></span>
 
                     </div>
 
                     <div className='row'>
 
-                        <span>Assunto: <a>{conteudo.assunto}</a></span>
+                        <span>Assunto: <i>{conteudo.assunto}</i></span>
 
                     </div>
 
                     <div className='row'>
 
-                        <span>Cadastrado em: <a>{conteudo.createdFormated}</a></span>
+                        <span>Cadastrado em: <i>{conteudo.createdFormated}</i></span>
 
                     </div>
 
                     <div className='row'>
 
-                        <span>Status: <a style={{ color: '#FFF', backgroundColor: conteudo.status === 'Atendido' ? '#5cb85c' : '#EE0000' }}>{conteudo.status}</a></span>
+                        <span>Status: <i style={{ color: '#FFF', backgroundColor: conteudo.status === 'Atendido' ? '#5cb85c' : '#EE0000' }}>{conteudo.status}</i></span>
 
                     </div>
 
