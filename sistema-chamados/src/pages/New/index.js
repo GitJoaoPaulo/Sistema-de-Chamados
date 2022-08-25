@@ -1,5 +1,6 @@
 import './new.css';
 import { FiPlusCircle } from 'react-icons/fi';
+import { useHistory, useParams } from 'react-router-dom';
 
 import Header from '../../components/Header';
 import Title from '../../components/Title';
@@ -12,6 +13,9 @@ import { toast } from 'react-toastify';
 
 function New() {
 
+    const{ id } = useParams();
+    const history = useHistory();
+
     const [loadCompanies, setLoadCompanies] = useState(true);
     const [companiesSelected, setCompaniesSelected] = useState(0);
     const [companies, setCompanies] = useState([]);
@@ -19,6 +23,7 @@ function New() {
     const [assunto, setAssunto] = useState("Suporte de Equipamentos");
     const [status, setStatus] = useState("Aberto");
     const [complemento, setComplemento] = useState("");
+    const [idCompanies, setIdCompanies] = useState(false);
 
     const { user } = useContext(AuthContext);
 
@@ -46,6 +51,11 @@ function New() {
     
                     setCompanies(lista);
                     setLoadCompanies(false);
+
+
+                    if(id){
+                        loadId(lista);
+                    }
     
                 })
                 .catch((error) => {
@@ -60,10 +70,51 @@ function New() {
 
     }, []);
 
+
+    async function loadId(lista){
+        await firebase.firestore().collection('called').doc(id).get()
+        .then((snapshot) => {
+            setAssunto(snapshot.data().assunto);
+            setStatus(snapshot.data().status);
+            setComplemento(snapshot.data().complemento);
+
+            let index = lista.findIndex(item => item.id === snapshot.data().empresaId)
+            setCompaniesSelected(index);
+            setIdCompanies(true);
+        })
+        .catch((error) => {
+            console.log("Erro: ", error);
+            setIdCompanies(false);
+        })
+    }
    
 
     async function handleRegister(e) {
         e.preventDefault();
+
+        if(idCompanies){
+            await firebase.firestore().collection('called').doc(id).update({
+                empresa: companies[companiesSelected].nome,
+                empresaId: companies[companiesSelected].id,
+                assunto: assunto,
+                status: status,
+                complemento: complemento,
+                userId: user.uid
+            })
+            .then(() => {
+                toast.success("Chamado Editado com sucesso");
+                setCompaniesSelected(0);
+                setComplemento('');
+                history.push('/dashboard');
+            })
+            .catch((error) => {
+                toast.error("Ops, erro ao editar chamaado");
+                console.log(error);
+            })
+
+            return;
+        }
+
         await firebase.firestore().collection("called").add({
             created: new Date(),
             empresa: companies[companiesSelected].nome,

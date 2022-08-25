@@ -90,8 +90,11 @@ function AuthProvider({ children }) {
                     })
             })
             .catch((error) => {
-                console.log(error);
-                toast.error('Ops! Algo deu errado')
+                if (error.code === 'auth/weak-password') {
+                    toast.info('Senha muito fraca');
+                } else if (error.code === 'auth/email-already-in-use') {
+                    toast.info('Email já existente');
+                }
                 setLoadingAuth(false);
             })
 
