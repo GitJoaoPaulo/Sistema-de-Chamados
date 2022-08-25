@@ -7,6 +7,7 @@ import Dashboard from '../pages/Dashboard';
 import Profile from '../pages/Profile';
 import Companies from '../pages/Companies';
 import New from '../pages/New';
+import Error from '../pages/Error';
 
 export default function RoutesApp() {
     return (
@@ -18,6 +19,7 @@ export default function RoutesApp() {
             <Route exact path="/companies" component={Companies} isPrivate />
             <Route exact path='/new' component={New} isPrivate/>
             <Route exact path='/new/:id' component={New} isPrivate/>
+            <Route exact path='*' component={Error}/>
         </Switch>
     )
 }
